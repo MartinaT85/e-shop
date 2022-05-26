@@ -9,7 +9,7 @@
 
   .logo-container {
     height: 100%;
-    width: 70px;
+    width: 7rem;
     padding: 25px;
   }
 
@@ -17,7 +17,7 @@
     width: 50%;
     height: 100%;
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     justify-content: flex-end;
 
     .nav-link {
