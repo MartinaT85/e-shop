@@ -3,12 +3,15 @@ import {
   signInAuthUserWithEmailAndPassword,
 } from "../../utils/firebase/firebase";
 import SignUpForm from "../../componets/sign-up/Sign-Up";
-import { createAuthUserWithEmailAndPAssword } from "../../utils/firebase/firebase";
+import { createAuthUserWithEmailAndPassword } from "../../utils/firebase/firebase";
 import SignInForm from "../../componets/sign-in/Sign-In";
+import { useContext } from "react";
+import { UserContext } from "../../context/userContext";
 
 import "./authentification.styles.scss";
 
 function Authentification() {
+  const { setCurrentUser } = useContext(UserContext);
   async function register(formData) {
     const { displayName, email, password, confirmPassword } = formData;
     console.log("register", displayName, email);
@@ -18,10 +21,11 @@ function Authentification() {
     }
 
     try {
-      const { user } = await createAuthUserWithEmailAndPAssword(
+      const { user } = await createAuthUserWithEmailAndPassword(
         email,
         password
       );
+      setCurrentUser(user);
       await createUserDocumentFromAuth(user, { displayName });
       console.log("response", user);
     } catch (error) {
@@ -36,8 +40,11 @@ function Authentification() {
     console.log("login", email, password);
 
     try {
-      const res = await signInAuthUserWithEmailAndPassword(email, password);
-      console.log("res", res);
+      const { user } = await signInAuthUserWithEmailAndPassword(
+        email,
+        password
+      );
+      setCurrentUser(user);
     } catch (error) {
       console.log(error.code);
     }
