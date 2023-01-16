@@ -5,13 +5,10 @@ import {
 import SignUpForm from "../../componets/sign-up/Sign-Up";
 import { createAuthUserWithEmailAndPassword } from "../../utils/firebase/firebase";
 import SignInForm from "../../componets/sign-in/Sign-In";
-import { useContext } from "react";
-import { UserContext } from "../../context/userContext";
 
 import "./authentification.styles.scss";
 
 function Authentification() {
-  const { setCurrentUser } = useContext(UserContext);
   async function register(formData) {
     const { displayName, email, password, confirmPassword } = formData;
     console.log("register", displayName, email);
@@ -25,7 +22,7 @@ function Authentification() {
         email,
         password
       );
-      setCurrentUser(user);
+
       await createUserDocumentFromAuth(user, { displayName });
       console.log("response", user);
     } catch (error) {
@@ -44,7 +41,6 @@ function Authentification() {
         email,
         password
       );
-      setCurrentUser(user);
     } catch (error) {
       console.log(error.code);
     }
