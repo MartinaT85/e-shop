@@ -10,7 +10,6 @@ const Shop = () => {
       {products.map((product) => {
         return <ProductCard product={product} key={product.id} />;
       })}
-      ;
     </div>
   );
 };
