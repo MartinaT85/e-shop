@@ -10,9 +10,8 @@ import { ReactComponent as Logo } from "../../assets/crown.svg";
 
 function Navbar() {
   const { currentUser } = useContext(UserContext);
-  const { isCartOpen } = useContext(CartContext);
-
-  console.log("Current User", currentUser);
+  const { isOpen } = useContext(CartContext);
+  // console.log("Current User", currentUser);
   return (
     <>
       <div className="navigation">
@@ -34,7 +33,7 @@ function Navbar() {
           )}
           <CartIcon />
         </div>
-        {isCartOpen && <CartDropdown />}
+        {isOpen && <CartDropdown />}
       </div>
       <Outlet />
     </>
