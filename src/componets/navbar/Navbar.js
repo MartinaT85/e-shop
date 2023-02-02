@@ -11,7 +11,7 @@ import { ReactComponent as Logo } from "../../assets/crown.svg";
 function Navbar() {
   const { currentUser } = useContext(UserContext);
   const { isOpen } = useContext(CartContext);
-  // console.log("Current User", currentUser);
+  console.log("IS_OPEN", isOpen);
   return (
     <>
       <div className="navigation">

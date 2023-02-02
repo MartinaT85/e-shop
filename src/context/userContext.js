@@ -1,4 +1,5 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useEffect, useReducer } from "react";
+
 import {
   onAuthStateChangedListener,
   createUserDocumentFromAuth,
@@ -9,10 +10,36 @@ export const UserContext = createContext({
   setCurrentUser: () => null,
 });
 
-export const UserProvider = ({ children }) => {
-  const [currentUser, setCurrentUser] = useState(null);
-  const value = { currentUser, setCurrentUser };
+const userReducer = (state, action) => {
+  console.log("dispached");
+  console.log("STATE", state);
+  console.log("ACTION", action);
+  const { type, payload } = action;
+  switch (type) {
+    case "SET_CURRENT_USER":
+      return {
+        ...state,
+        currentUser: payload,
+      };
+    default:
+      throw new Error(`Unhanled type ${type}`);
+  }
+};
 
+const INITIAL_STATE = {
+  currentUser: null,
+};
+
+export const UserProvider = ({ children }) => {
+  // const [currentUser, setCurrentUser] = useState(null);
+  const [state, dispatch] = useReducer(userReducer, INITIAL_STATE);
+  console.log("CURRENT STATE", state);
+  const { currentUser } = state;
+  const setCurrentUser = (user) => {
+    dispatch({ type: "SET_CURRENT_USER", payload: user });
+  };
+
+  const value = { currentUser, setCurrentUser };
   useEffect(() => {
     const unsubscribe = onAuthStateChangedListener((user) => {
       if (user) {
