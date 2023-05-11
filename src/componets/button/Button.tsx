@@ -1,14 +1,41 @@
+import {ComponentPropsWithoutRef,  ReactNode} from 'react'
+// PropsWithChildren
 import "./button.styles.scss";
 
-const BUTTON_TYPE_CLASSES = {
-  google: "google-sign-in",
-  inverted: "inverted",
-};
 
-const Button = ({ children, buttonType, ...otherProps }) => {
+
+
+interface ButtonProps extends ComponentPropsWithoutRef<'button'>  {
+  buttonType: BUTTON_TYPE_CLASSES,
+  children?: ReactNode,
+  
+  
+}
+
+
+//  PropsWithChildren<ButtonProps> problems ...otherProps
+
+
+// type ButtonProps = {
+//   buttonType: BUTTON_TYPE_CLASSES, 
+//   // ??
+//   onClick: () => void,
+// }
+
+
+
+export enum BUTTON_TYPE_CLASSES  {
+  google = "google-sign-in",
+  inverted = "inverted",
+} ;
+
+// type BUTTON_TYPE_2 = 'google-sign-in2' | 'inverted'
+
+
+const Button = ({ children, buttonType, ...otherProps }: ButtonProps) => {
   return (
     <button
-      className={`button-container ${BUTTON_TYPE_CLASSES[buttonType]}`}
+      className={`button-container ${buttonType}`}
       {...otherProps}
     >
       {children}
