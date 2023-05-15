@@ -22,10 +22,10 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v2
-      - name: Install node 16
-        uses: actions/setup-node@v1
+      - name: Install node 18
+        uses: actions/setup-node
         with:
-          node-version: 16.x
+          node-version: 18.x
       - name: Install NPM Dependencies
         run: npm i
       - name: Build Project
@@ -34,5 +34,6 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: production-files
-          path: ./dist
+          path: ./build
+  
 # deploy job
