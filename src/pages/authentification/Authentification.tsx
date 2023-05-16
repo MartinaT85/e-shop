@@ -29,6 +29,7 @@ function Authentification() {
     }
 
     try {
+      // @ts-ignore
       const { user } = await createAuthUserWithEmailAndPassword(
         email,
         password
@@ -39,6 +40,7 @@ function Authentification() {
       await createUserDocumentFromAuth(user, { displayName });
       console.log("response", user);
     } catch (error) {
+      // @ts-ignore
       if (error.code === "auth/email-already-in-use") {
         alert("email is aleready in use");
       }
@@ -50,6 +52,7 @@ function Authentification() {
     console.log("login", email, password);
 
     try {
+      // @ts-ignore
       const { user } = await signInAuthUserWithEmailAndPassword(
         email,
         password
@@ -57,6 +60,7 @@ function Authentification() {
 
       console.log(user.providerId, "USER DOESN'T EXIST")
     } catch (error) {
+      // @ts-ignore
       console.log(error.code);
     }
   }
