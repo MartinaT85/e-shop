@@ -1,4 +1,4 @@
-// import { initializeApp } from "firebase/app";
+import { initializeApp } from "firebase/app";
 import {
   getAuth,
   signInWithEmailAndPassword,
@@ -38,7 +38,7 @@ export const firebaseConfig = {
   appId: "1:958623991835:web:70237f5f256429125390be",
 };
 
-// const firebaseApp = initializeApp(firebaseConfig);
+export const firebaseApp = initializeApp(firebaseConfig);
 
 const GoogleProvider = new GoogleAuthProvider();
 GoogleProvider.setCustomParameters({
