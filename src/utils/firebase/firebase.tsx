@@ -55,7 +55,7 @@ type objectToAdd = {
   title: string,
 }
 
-export const addCollectionAndDocuments = async <T extends objectToAdd> (
+export const addCollectionAndDocuments = async <T extends objectToAdd>(
   collectionKey: string,
   objectsToAdd: T[]
 ) => {
