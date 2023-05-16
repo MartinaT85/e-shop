@@ -73,7 +73,7 @@ const cartReducer = (state = INITIAL_STATE, action: SetIsOpenAction | setCartIte
     case "SET_CART_ITEMS":
       return {
         ...state,
-        ...payload,
+        payload,
       };
     case "SET_IS_OPEN":
       return {
