@@ -1,4 +1,4 @@
-import { initializeApp } from "firebase/app";
+// import { initializeApp } from "firebase/app";
 import {
   getAuth,
   signInWithEmailAndPassword,
@@ -24,7 +24,7 @@ import {
   QueryDocumentSnapshot
 } from "firebase/firestore";
 
-const firebaseConfig = {
+export const firebaseConfig = {
   apiKey: "AIzaSyAMcLMjhWW4ym8vbulCBJo996Ju5zAkpAs",
 
   authDomain: "e-shop-69dfa.firebaseapp.com",
