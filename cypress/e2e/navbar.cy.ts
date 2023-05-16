@@ -2,7 +2,7 @@
 
 describe('navigation bar', () => {
     beforeEach(() => {
-        cy.visit('/')
+        cy.visit('http://localhost:3000/')
     })
 
     it('sholud test the links in navbar', () => {
@@ -10,13 +10,13 @@ describe('navigation bar', () => {
 
         cy.get('[data-test="navbar"]').within(($navigation) => {
             cy.get('[data-test="logo"]').click()
-            cy.url().should('eq', `${baseUrl}/`)
+            cy.url().should('eq', `http://localhost:3000/`)
 
             cy.get('[data-test="shop"]').click()
-            cy.url().should('eq', `${baseUrl}/shop`)
+            cy.url().should('eq', `http://localhost:3000/shop`)
 
             cy.get('[href="/auth"]').click()
-            cy.url().should('eq', `${baseUrl}/auth`)
+            cy.url().should('eq', `http://localhost:3000/auth`)
             
             
 

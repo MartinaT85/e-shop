@@ -38,7 +38,7 @@ export const firebaseConfig = {
   appId: "1:958623991835:web:70237f5f256429125390be",
 };
 
-const firebaseApp = initializeApp(firebaseConfig);
+export const firebaseApp = initializeApp(firebaseConfig);
 
 const GoogleProvider = new GoogleAuthProvider();
 GoogleProvider.setCustomParameters({
@@ -55,7 +55,7 @@ type objectToAdd = {
   title: string,
 }
 
-export const addCollectionAndDocuments = async <T extends objectToAdd> (
+export const addCollectionAndDocuments = async <T extends objectToAdd>(
   collectionKey: string,
   objectsToAdd: T[]
 ) => {
